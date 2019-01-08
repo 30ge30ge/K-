@@ -39,17 +39,20 @@ plt.ylabel("price")
 ax.xaxis_date ()
 plt.grid()
 
+# 画5日均线图
 avg_5 = talib.MA(ts["close"], timeperiod=5)
 print(avg_5)
 fig=plt.subplots(figsize=(8,4))
 plt.plot(avg_5,color="g")
 plt.xticks(rotation=75)
 plt.show()
+# 画MACD
 macd, macdsignal, macdhist = talib.MACD(ts["close"], fastperiod=12, slowperiod=26, signalperiod=9)
 fig=plt.subplots(figsize=(8,4))
 plt.plot(macd)
 plt.xticks(rotation=75)
 plt.show()
+# 画布林
 upperband, middleband, lowerband = talib.BBANDS(ts["close"], timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)
 fig=plt.subplots(figsize=(8,4))
 plt.plot(upperband)
